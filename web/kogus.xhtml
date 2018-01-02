@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+    <title>Title</title>
+</head>
+<h:body>
+    <div class="container">
+
+        <hr />
+
+        <h:form>
+            <h:commandButton action="#{kogus.sucluForm()}" value="SUÇLU"/>
+            <h:commandButton action="#{kogus.sucForm()}" value="SUÇLAR"/>
+            <div class="container">
+                <p>
+                    <label >ID</label>
+                    <h:inputText value="#{kogus.a.id}" />
+                </p>
+                <p>
+                    <label >AD</label>
+                    <h:inputText value="#{kogus.a.ad}" />
+                </p>
+                <p>
+                <label >KAT</label>
+                <h:inputText value="#{kogus.a.kat}"/>
+            </p>
+                <p>
+                    <label >NUMARA</label>
+                    <h:inputText value="#{kogus.a.numara}"/>
+                </p>
+                <p>
+                    <label >BİNA NO</label>
+                    <h:inputText value="#{kogus.a.binano}"/>
+                </p>
+                <p>
+                    <label >GARDİYAN</label>
+                    <h:inputText value="#{kogus.a.gardiyan_id}"/>
+                </p>
+                <p>
+                    <h:commandButton value="CREATE" action="#{kogus.createKogus}" />
+                    <h:commandButton value="UPDATE" action="#{kogus.updateKogus}"/>
+                    <h:commandButton value="DELETE" action="#{kogus.delete(kogus.a.id)}"/>
+                </p>
+
+            </div>
+        </h:form>
+        <h:dataTable value="#{kogus.aList}" var="a"
+                     styleClass="table table-stripped"
+        >
+
+            <h:column>
+                <f:facet name="header">id</f:facet>
+                #{a.id}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">ad</f:facet>
+                #{a.ad}
+            </h:column>
+            <h:column>
+                <f:facet name="header">KAT</f:facet>
+                #{a.kat}
+            </h:column>
+            <h:column>
+                <f:facet name="header">KAT</f:facet>
+                #{a.numara}
+            </h:column>
+            <h:column>
+                <f:facet name="header">BİNANO</f:facet>
+                #{a.binano}
+            </h:column>
+            <h:column>
+                <f:facet name="header">GARDİYAN</f:facet>
+                #{a.gardiyan_id}
+            </h:column>
+        </h:dataTable>
+    </div>
+</h:body>
+</html>

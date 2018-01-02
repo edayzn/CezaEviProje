@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+     <h:body>
+        <div class="container">
+
+           <hr />
+
+<h:form>
+
+   <h:commandButton action="#{suclu.sucForm()}" value="SUÇLAR"></h:commandButton>
+   <h:commandButton action="#{suclu.kogusForm()}" value="KOGUŞ"></h:commandButton>
+
+           <div class="container">
+              <p>
+                 <label >ID</label>
+                 <h:inputText value="#{suclu.a.id}" />
+              </p>
+              <p>
+                 <label >AD</label>
+                 <h:inputText value="#{suclu.a.ad}" />
+              </p>
+              <label >Suc</label>
+              <h:selectOneMenu value="#{suclu.a.suc_id}">
+              <c:forEach items="#{suclu.suc}" var ="c">
+                 <f:selectItem itemValue="#{c.id}" itemLabel="#{c.ad}"></f:selectItem>
+              </c:forEach>
+              </h:selectOneMenu>
+
+              <p>
+                 <label >TC</label>
+                 <h:inputText value="#{suclu.a.tc}" />
+              </p>
+
+              <!--   <h:panelGrid columns="3">
+              Giriş Tarihi :
+              <h:inputText id="date" value="#{suclu.a.giris_tarih}"
+                           size="20" required="true"
+                           label="Giriş Tarihi" >
+                 <f:convertDateTime pattern="d-M-yyyy" />
+              </h:inputText>
+              <h:message for="date" style="color:red" />
+           </h:panelGrid>
+
+                                                    <p>
+                                      <label for="Mahalle">GİRİŞ TARİHİ</label>
+                                                              <h:inputText value="#{suclu.a.giris_tarih}" />
+                                  </p>
+                                                   <p>
+                                      <label for="Mahalle">ÇIKIŞ TARİHİ</label>
+                                                              <h:inputText value="#{suclu.a.cikis_tarih}" />
+                                  </p>-->
+              <label >Koguş</label>
+              <h:selectOneMenu value="#{suclu.a.kogus_id}">
+                 <c:forEach items="#{suclu.kogus}" var ="c">
+                    <f:selectItem itemValue="#{c.id}" itemLabel="#{c.ad}"></f:selectItem>
+                 </c:forEach>
+              </h:selectOneMenu>
+              <p>
+                 <label >KAN GRUBU</label>
+                 <h:inputText value="#{suclu.a.kan_grubu}" />
+              </p>
+
+              <p>
+                 <h:commandButton value="CREATE" action="#{suclu.createSuclu}" />
+                 <h:commandButton value="UPDATE" action="#{suclu.updateSuclu}"/>
+                 <h:commandButton value="DELETE" action="#{suclu.delete(suclu.a.tc)}"/>
+              </p>
+           </div>
+</h:form>
+           <h:dataTable value="#{suclu.aList}" var="a"
+                        styleClass="table table-stripped"
+           >
+
+              <h:column>
+                 <f:facet name="header">id</f:facet>
+                 #{a.id}
+              </h:column>
+
+              <h:column>
+                 <f:facet name="header">ad</f:facet>
+                 #{a.ad}
+              </h:column>
+              <h:column>
+                 <f:facet name="header">Suc_id</f:facet>
+                 #{a.suc_id}
+              </h:column>
+
+              <h:column>
+                 <f:facet name="header">tc</f:facet>
+                 #{a.tc}
+              </h:column>
+
+              <h:column>
+                 <f:facet name="header">Koguş Id</f:facet>
+                 #{a.kogus_id}
+              </h:column>
+
+              <h:column>
+                 <f:facet name="header">Kan gurubu</f:facet>
+                 #{a.kan_grubu}
+              </h:column>
+
+           </h:dataTable>
+        </div>
+     </h:body>
+</html>

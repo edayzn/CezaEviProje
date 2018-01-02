@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+    <title>Title</title>
+</head>
+<h:body>
+    <div class="container">
+
+        <hr />
+
+        <h:form>
+            <h:commandButton action="#{suc.sucluForm()}" value="SUÇLU"/>
+            <h:commandButton action="#{suc.kogusForm()}" value="KOGUŞ"/>
+            <div class="container">
+
+                <p>
+                    <label >AD</label>
+                    <h:inputText value="#{suc.a.ad}" />
+                </p>
+                <label >SUC</label>
+               <h:inputText value="#{suc.a.suc_tanimi}"/>
+
+                <p>
+                    <h:commandButton value="CREATE" action="#{suc.createSuc}" />
+
+
+                </p>
+                <p>
+                    <label >ID</label>
+                    <h:inputText value="#{suc.a.id}" />
+                    <h:commandButton value="DELETE" action="#{suc.delete(suc.a.id)}"/>
+                    <h:commandButton value="UPDATE" action="#{suc.updateSuc}"/>
+                </p>
+            </div>
+        </h:form>
+        <h:dataTable value="#{suc.aList}" var="a"
+                     styleClass="table table-stripped"
+        >
+
+            <h:column>
+                <f:facet name="header">id</f:facet>
+                #{a.id}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">ad</f:facet>
+                #{a.ad}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Suc Tanımı</f:facet>
+                #{a.suc_tanimi}
+            </h:column>
+
+        </h:dataTable>
+    </div>
+</h:body>
+</html>
